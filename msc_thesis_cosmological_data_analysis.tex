@@ -189,7 +189,7 @@
 	These two assumptions can be combined, and written as,
 	\begin{equation}
 		\label{christofell_derivation}
-		g_{\alpha\beta;\mu}=g_{\alpha\beta,\mu}-{\Gamma^\lambda}_{\mu\alpha}g_{\lambda\beta}-{\Gamma^\lambda}_{\mu\beta}g_{\lambda\alpha}=0 \, ,  
+		\nabla_\mu g_{\alpha\beta}=g_{\alpha\beta;\mu}=g_{\alpha\beta,\mu}-{\Gamma^\lambda}_{\mu\alpha}g_{\lambda\beta}-{\Gamma^\lambda}_{\mu\beta}g_{\lambda\alpha}=0 \, ,  
 	\end{equation}
 	which gives us our final expression of the Levi-Civita connection \cite{Lee2019IntroductionTR, Clifton_2012},
 	\begin{equation}
@@ -1126,7 +1126,7 @@
 	
 	
 	\chapter{Parameterizations of the $\Lambda$CDM Model}
-	In this chapter we study various cases in which we parameterize the equation of state of dark energy. Through these modifications, we alter our initial Energy-Stress Tensor, leading us to an altered right-hand-side in the field equations. During the data analysis portion of this thesis we will mostly make use the $w_0$CDM and $w_0w_a$CDM (or JBP) model, however it is imperative that we also briefly discuss a few different models that interest the scientific community today.
+	In this chapter we study various cases in which we parameterize the equation of state of dark energy. Through these modifications, we alter our initial Energy-Stress Tensor, leading us to an altered right-hand-side in the field equations. During the data analysis portion of this thesis we will mostly make use of the $w_0$CDM and $w_0w_a$CDM (or JBP) models, however it is imperative  we also briefly discuss a few different models that interest the scientific community today.
 	\section{The Stress-Energy Tensor}
 	For the FLRW metric, the Stress-Energy Tensor becomes
 	\begin{equation}
@@ -1251,9 +1251,13 @@
 	\begin{equation}
 		\begin{aligned}
 			\delta S \left[ g \right] &= \int d^4x \delta \left[  \sqrt{-g}f(R)  \right]= \\
-			\, & = \int d^4x \sqrt{-g}\delta g^{\mu\nu}\left( F(R)R_{\mu\nu} -\frac12 g_{\mu\nu}f(R) + \left[ g_{\mu\nu} \square  - \nabla_{\mu}\nabla_\nu \right] F(R) \right) \, , \quad F(R) = \frac{df}{dR} \, .
+			\, & = \int d^4x \sqrt{-g}\delta g^{\mu\nu}\left( F(R)R_{\mu\nu} -\frac12 g_{\mu\nu}f(R) + \left[ g_{\mu\nu} \square  - \nabla_{\mu}\nabla_\nu \right] F(R) \right) \, ,
 		\end{aligned}
 	\end{equation}
+	where,
+	\begin{equation*}
+		  F(R) = \frac{df}{dR} \, .
+	\end{equation*}
 	Thus, the left-hand-side of the field equations is generally of the form
 	\begin{equation}
 		E_{\mu\nu} = F(R)R_{\mu\nu} -\frac12 g_{\mu\nu}f(R) + \left[ g_{\mu\nu} \square  - \nabla_{\mu}\nabla_\nu \right] F(R) \, .
@@ -1353,6 +1357,99 @@
 	\begin{equation}
 		B = \ddot H + 4H\dot H \qquad\text{and} \qquad\Xi = \dot H + 2H^2 \, .
 	\end{equation}
+	
+	\chapter{Data-Analysis Methods in Computational Physics - An Introduction to the Monte Carlo Method}
+	\section{The Core of MC Methods}
+	The Monte Carlo method is less a single algorithm that is applied to physical problems, and more a methodology that is based not on deterministic calculations, but on statistical sampling. Instead of evaluating an integral, sum, or any other quantity analytically, we generate an ensemble large enough, that contains a suffice amount of random configurations, and estimate that quantity through the ensemble.
+	
+	Almost every MC (Monte Carlo) problem reduces to estimating an expectation value,
+	\begin{equation}
+		\label{mc_sampling}
+		\left\langle A \right\rangle = \frac{\int A(\vec x) \rho (\vec x) d \vec x}{\int \rho (\vec x) d \vec x } \, ,
+	\end{equation}
+	where $\rho(\vec x)$ is some weight (e.g. Boltzmann factor, probability distribution etc.). 
+		\section{Random Sampling}
+	In Random (Simple) Sampling, we generate samples $\vec x_i$ from $\rho(\vec x)$, and then average the quantity $A$ over those samples. Mathematically we can see that,
+	\begin{equation}
+		\label{random_sampling}
+		I=\int_{a}^{b} dx f(x)=(b-a)\left\langle f(x) \right\rangle,
+	\end{equation}
+	where $\left\langle f(x) \right\rangle$ is the unweighted average of $f(x)$ over the interval $[a,b]$. In the simplest form of sampling, we calculate $f(x)$ at a large number $L$ of random samples $x$ in that interval. Obviously, for $L\rightarrow\infty$, we have our exact quantity. However, since many of the generated points are located at areas where $\rho(x)$ is negligible, we need a very large amount of random samples for our estimations to be of value. This leads to a need for a more cost efficient form of sampling, called importance sampling.
+	\section{Importance Sampling}
+	We write eq.(\ref{random_sampling}) as,
+	\begin{equation}
+		\label{importance_sampling_1}
+		I=\int_{0}^{1} dx w(x)\frac{f(x)}{w(x)}=\int_{0}^{1}du \frac{f(x(u))}{w(x(u))}\approx \frac{1}{L}\sum_{i=1}^{L}\frac{f(x(u_i))}{w(x(u_i))}.
+	\end{equation} 
+	This way, the variance $\sigma^2_I$ with $L$ random samples is written as,
+	\begin{equation}
+		\label{variance_importance_sampling}
+		\sigma^2_I=\frac{1}{L}\left[ \left\langle \left( \frac{f}{w} \right)^2 \right\rangle -\left\langle  \frac{f}{w} \right\rangle ^2 \right].
+	\end{equation}
+	Even though the variance still goes as $1/L$, the magnitude is reduced significantly for some $w(x)$. The function $w(x)$ is such that $f(x)/w(x)$ is as smooth as possible (ideally it should be constant). In the section above, $w(x)$ is constant, and this is what leads to a large relative error.
+	\section{Markov Chains}
+	A Markov Chain is a sequence of random variables, in which the probability that a transition to a new state is accepted relies only on the current state, and not any history before,
+	\begin{equation}
+		\label{markov_chain_transition_kernel}
+		P(x_{t+1} | x_t,x_{t-1},\cdots,x_0)=P(x_{t+1}|x_t).
+	\end{equation}
+	Essentially, the Markov Chain is a random walk through configuration space, where each move depends on the current state. In the transition kernel from eq.(\ref{markov_chain_transition_kernel}), every line must add up to 1, meaning that,
+	\begin{equation*}
+		\sum_{y} P(x_{t+1}=y | x_t =x ) = 1 \, , \quad \forall x,
+	\end{equation*}
+	meaning that we always transition somewhere without a chance of getting "trapped" at a specific state.
+	\section{The Metropolis Hastings Algorithm}
+	The Metropolis-Hastings Algorithm constructs a transition kernel $T$ out of $Q$, that satisfies detailed balance with respect to $\rho$, where  $Q(x'|x)$ is a simpler distribution of our choice. The steps of the algorithm are:
+	\begin{enumerate}
+		\item For a state $x$ propose a candidate state $x'$ 
+		\item Compute an acceptance ration:
+		\begin{equation}
+			\label{acceptance_ratio}
+			\text{acc}(x,x')=\min \left(1, \frac{\rho(x')Q(x|x')}{\rho(x)Q(x'|x)}\right)
+		\end{equation}
+		\item Draw a random number $u$ from a uniform distribution $(0,1)$, and check
+		\begin{equation*}
+			\begin{array}{c}
+				\bullet\text{  if }u \leq \text{acc} \rightarrow \text{ move to } x' \\ \, \\
+				\bullet\text{  if }u > \text{acc} \rightarrow \text{ stay at } x
+			\end{array}
+		\end{equation*}
+		\item Record the new state.
+	\end{enumerate}
+	Through this algorithm, the transition kernel we constructed is,
+	\begin{equation}
+		\label{acceptance_kernel}
+		T(x'|x)=Q(x'|x)\text{acc}(x,x') \, , \quad x' \neq x.
+	\end{equation}
+	Some common proposal distributions $Q(x'|x)$ are:
+	\begin{itemize}
+		\item Uniform Box (Random Walk),
+		\begin{equation*}
+			x'=x+\delta \cdot \mathcal{U}(0,1).
+		\end{equation*}
+		\item Gaussian Random Walk,
+		\begin{equation*}
+			x'=x+\mathcal{N}(0,\sigma^2).
+		\end{equation*}
+		\item Log-Normal (for positive-definite parameters), if $x>0$, $\forall x$, 
+		\begin{equation*}
+			\log x'=\log x + \mathcal{N}(0,\sigma^2).
+		\end{equation*}
+	\end{itemize}
+	Understanding the Metropolis-Hastings algorithm is fundamental to the comprehension of the scripts used in this thesis. 
+	\section{emcee - Affine-Invariant Ensemble MCMC Sampler}
+	Unlike a simple Metropolis-Hastings algorithm, which uses a single walker, emcee is an open-source python package that uses $k \geq 2 n_\text{dim}$ walkers, where the proposal distribution for one walker is best on the positions of all other walkers at that current step. To update the position $X_k$ of walker $k$, a walker $j$ at $X_j$ is drawn randomly from the remaining walkers $S_{\left[ k\right]} =\left\lbrace  X_j, \forall j \neq k \right\rbrace$ , and a new position is proposed,
+	\begin{equation}
+		X_k(t)\to Y=X_j + Z \left[ X_k(t)-X_j \right] \, ,
+	\end{equation}
+	where $Z$ a random variable from a distribution $g(Z=z)$. If $g(z^{-1})=zg(z)$, the proposal above is symmetric. This means that, if the proposal with probability
+	\begin{equation}
+		q=\text{min}\left( 1,Z^{N-1} \frac{p(Y)}{p(X_k(t))} \right) \, ,
+	\end{equation}
+	where $N$ the dimension of the parameter space, is accepted, the chain will satisfy detailed balance. 
+	\section{Monte Carlo Applications on Cosmological Data Analysis}
+	
+	
 	
 	\appendix
 	\chapter{Data Sets}
