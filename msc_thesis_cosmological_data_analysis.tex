@@ -1,8 +1,8 @@
 \documentclass{book}
 \usepackage{geometry}
 \geometry{
-	left=3cm,
-	right=2.5cm,
+	left=2.8cm,
+	right=2.3cm,
 	top=3cm,
 	bottom=3cm
 }
@@ -1266,7 +1266,7 @@
 	\begin{equation}
 		E_{\mu\nu}=1+\alpha n R^{n-1}R_{\mu\nu}-\frac12 g_{\mu\nu}\left( R+\alpha R^n \right) + \alpha n \left[ g_{\mu\nu}\square - \nabla_\mu \nabla_\nu \right] R^{n-1}
 	\end{equation}
-	\subsection{Starobinsky Gravity - $n=2$}
+	\section{Starobinsky Gravity - $n=2$}
 	For $n=2$, the model $f(R)$ becomes the Starobinsky Gravity Model $f(R)=R+\alpha R^2$. The action $S$, \begin{equation}
 		S=\int \sqrt{-g} \left( R+\alpha R^2 \right) \, ,
 	\end{equation}
@@ -1274,7 +1274,7 @@
 	\begin{equation}
 		V(\phi)= \Lambda^4 \left( 1 - e^{-\sqrt{2/3}\phi / M_P} \right)^2 \, ,
 	\end{equation} 
-	which in turn is an inflationary potential. 
+	which in turn is an inflationary potential. This model primarily focuses on the early stages of the Universe, where curvature is high and the $\alpha R^2$ term dominates, and does not actively show late-time acceleration, since it reverts back to standard GR for low curvatures. To solve this problem, we propose a second model of modified gravity in the following subsection, where a cosmological constant is added, similarly to $\Lambda$CDM.
 	
 	By making use of our two Mathematica algorithms, we first perform a variation on the action $S$, leading to our left-hand-side tensor component,
 	\begin{equation}
@@ -1292,9 +1292,7 @@
 			\begin{aligned}
 				\tensor{L}{^0^0} =\frac{1}{a^4} \left[ 54\alpha \, \dot{a}^4 - 36\alpha \, a \dot{a}^2 \ddot{a} - 3 a^2 \left( \dot{a}^2 - 6\alpha \, \ddot{a}^2 + 12\alpha \, \dot{a} a^{(3)} \right) \right] \, ,
 			\end{aligned} \\ \, \\
-			\begin{aligned}
-				\tensor{L}{^1^1} &=\frac{1}{a^6} \left[ 18\alpha \, \dot{a}^4 - 72\alpha \, a \dot{a}^2 \ddot{a} + a^2 \left( \dot{a}^2  + 18\alpha \, \ddot{a}^2 \right. \right.  \\ & \left. \left.  + 24\alpha \, \dot{a} a^{(3)} \right) + 2 a^3 \left( \ddot{a} + 6\alpha \, a^{(4)} \right) \right] \, .
-			\end{aligned}
+			\tensor{L}{^1^1} =\frac{1}{a^6} \left[ 18\alpha \, \dot{a}^4 - 72\alpha \, a \dot{a}^2 \ddot{a} + a^2 \left( \dot{a}^2  + 18\alpha \, \ddot{a}^2   + 24\alpha \, \dot{a} a^{(3)} \right) + 2 a^3 \left( \ddot{a} + 6\alpha \, a^{(4)} \right) \right] \, .
 		\end{matrix}
 	\end{equation}
 	Rewriting so that the Hubble parameter appears, 
@@ -1304,59 +1302,146 @@
 			L^{11} = \frac{1}{a^2}\left[3H^2 + 2\dot H + \alpha\left(12\dddot H + 72H\ddot H + 54\dot H^2 + 108H^2\dot H\right)\right] \, .
 		\end{matrix}
 	\end{equation}
-	\subsection{The $n\to0$ Limit}
-	For the limit $n\to0$, the model $f(R)=R+\alpha R^n$ is of the form $f(R)=R(1+\alpha\ln R)$. Thus, the variation tensor of the new action is evaluated as
+	\section{Starobinsky Gravity and the Cosmological Constant}
+	Another useful model that has been studied is the combination of $\Lambda$CDM and the Starobinsky model,
+	\begin{equation}
+		f(R)=R-2\Lambda+\alpha R^2 \,.
+	\end{equation}
+	Through this, we can also model the late-time acceleration of the Universe, by studying deviations from $\Lambda$CDM using an inflationary $R^2$ term. In the early Universe, the $\alpha R^2$ term dominates, while in later stages, $\Lambda$CDM takes its place, leading to late-time acceleration.  
+	After variation, the LHS component is written as
+	\begin{equation}
+		E^{ab} = R^{ab} - \frac{1}{2} g^{ab} R + \Lambda g^{ab} - 2\alpha \left( R^{ab} R - \frac{1}{4} g^{ab} R^2 + \nabla^a \nabla^b R - g^{ab} \Box R \right) \, ,
+	\end{equation}
+	and for the FLRW metric,
+	\begin{equation}
+		\begin{matrix}
+			\begin{aligned}
+				L^{00} &= \Lambda + \frac{1}{a^4} \left[ 54\alpha  \dot{a}^4 - 36\alpha  a \dot{a}^2 \ddot{a} - 3 a^2 \left( \dot{a}^2 - 6\alpha  \ddot{a}^2 + 12\alpha  \dot{a} a^{(3)} \right) \right] 
+			\end{aligned} \, , \\ \, \\
+			L^{11} = -\frac{\Lambda}{a^2} + \frac{1}{a^6} \left[ 18\alpha  \dot{a}^4 - 72\alpha  a \dot{a}^2 \ddot{a} + a^2 \left( \dot{a}^2  + 18\alpha  \ddot{a}^2 + 24\alpha  \dot{a} a^{(3)} \right) + 2 a^3 \left( \ddot{a} + 6\alpha  a^{(4)} \right) \right] \, .
+		\end{matrix}
+	\end{equation}
+	Rewriting so that the Hubble parameter appears, 
+	\begin{equation}
+		\begin{matrix}
+			\begin{aligned}
+				L^{00} &= \Lambda - 3H^2 + \alpha\left(18\dot H^2 - 36H\ddot H - 108H^2\dot H\right)  
+			\end{aligned} \, , \\ \, \\
+			\begin{aligned}
+				L^{11} &= \frac{1}{a^2}\left[ \Lambda + 3H^2 + 2\dot H + \alpha\left(12\dddot H + 72H\ddot H + 54\dot H^2 + 108H^2\dot H\right)\right] \, .
+			\end{aligned}
+		\end{matrix}
+	\end{equation}
+	\section{The $n\to0$ Limit}
+	For the limit $n\to0$, the model $f(R)=R+\alpha R^n$ is of the form $f(R)=R(1+\alpha\ln R)$. Unlike the models above, this one uses logarithmic corrections brought by Quantum Field Theory, that introduce new methods of acceleration or modifications to gravitational dynamics without the need for a cosmological constant. 
+	Thus, the variation tensor of the new action is evaluated as
 	\begin{equation}
 		\label{log_R_model_Var}
-		\begin{aligned}  \tensor{E}{^a^b} &=-\frac{1}{4 R^3} \Big[  g^{ac} \Big( 4 g^{bd} R_{cd} R^2 (\alpha + R) + \alpha \big( R \nabla_b \nabla^c R - 2 (\nabla_b R)(\nabla^c R) \big) \Big) \\ &+ \alpha \Big( g^{bc} \big( R \nabla_a \nabla^c R - 2 (\nabla_a R)(\nabla^c R) \big) + g^{ae} g^{bd} R \nabla_e \nabla_d R \\ &\quad\quad + g^{ad} g^{be} \big( -4 (\nabla_d R)(\nabla_e R) + R \nabla_e \nabla_d R \big) \Big) \\ &- 2 g^{ab} \Big( \alpha R^3 \ln R + R^4 + g^{cd} \big( -2\alpha (\nabla_c R)(\nabla_d R) + \alpha R \nabla_d \nabla_c R \big) \\ &\quad\quad - 2\alpha (\nabla^e R)(\nabla_e R) + \alpha R \nabla^e \nabla_e R \Big) \Big] \, . \end{aligned} 
+		\begin{aligned} E^{ab} &= \frac{1}{4 R^2} \Big[ - g^{ac} \Big( 4 g^{bd} (1 + \alpha + \alpha \ln R) R_{cd} R^2 -\alpha R \nabla_b \nabla_c R + \alpha (\nabla_b R)(\nabla_c R) \Big) \\ &+ \alpha \, \Big( g^{bc} \big( R \nabla_a \nabla_c R - (\nabla_a R)(\nabla_c R) \big) + g^{ae} g^{bd} R \nabla_e \nabla_d R \\ &\phantom{+ \alpha \, \Big( } + g^{ad} g^{be} \big( -2 (\nabla_d R)(\nabla_e R) + R \nabla_e \nabla_d R \big) \Big) \\ &+ 2 g^{ab} \Big( R^3 + \alpha \ln R \, R^3 + \alpha g^{cd} \big( (\nabla_c R)(\nabla_d R) - R \nabla_d \nabla_c R \big) \\ &\phantom{+ 2 g^{ab} \Big( } +\alpha(\nabla^e R)(\nabla_e R) -\alpha R \Box R \Big) \Big] \end{aligned}
 	\end{equation}
 	Thus, the two left-hand-side tensor components are written as,
 	\begin{equation}
 			\begin{matrix}
 				\begin{aligned}
-					L^{00}=-\frac{1}{2a^2Q^2}\Big\{&
-					6\dot a^6
-					+2\alpha a^3(L-1)\dot a^2\ddot a
-					+12a\dot a^4\ddot a\\
-					&+a^2\left[\alpha(L+2)\dot a^4
-					+6\dot a^2\ddot a^2\right]\\
-					&+\alpha a^4\left[(L-1)\ddot a^2
-					-\dot a\,a^{(3)}\right]
-					\Big\} \, ,
-				\end{aligned}	
-				\\
-				\begin{aligned}
-					L^{11}=\frac{1}{6a^4Q^3}\Big\{&
-					6\dot a^8+30a\dot a^6\ddot a\\
-					&+a^2\left[\alpha(4+3L)\dot a^6
-					+54\dot a^4\ddot a^2\right]\\
-					&+a^3\left[9\alpha(L-1)\dot a^4\ddot a
-					+42\dot a^2\ddot a^3\right]\\
-					&+a^4\left[3\alpha(1+3L)\dot a^2\ddot a^2
-					+12\ddot a^4-10\alpha\dot a^3a^{(3)}\right]\\
-					&+\alpha a^5\left[(3L-2)\ddot a^3
-					+2\dot a\ddot a\,a^{(3)}
-					-\dot a^2a^{(4)}\right]\\
-					&+\alpha a^6\left[2(a^{(3)})^2-\ddot a\,a^{(4)}\right]
-					\Big\} \, ,
+					L^{00}=-\frac{3 }{a^2 \left(\dot{a}^2 + a\ddot{a}\right)} &  \left[ \left(1 - 2\alpha + \alpha \ln R\right)\dot{a}^4 + a \left(1 + \alpha \ln R\right)\dot{a}^2\ddot{a} - \alpha a^2 \ddot{a}^2 + \alpha a^2 \dot{a} \dddot{a} \right] \, , \\ \, & \, \\
+				
+					L^{11} =\frac{1}{a^4 \left(\dot{a}^2 + a\ddot{a}\right)^2}& \Big[ \left(1 - 4\alpha + \alpha \ln R\right)\dot{a}^6 + a \left(4 - 5\alpha + 4c \ln R\right)\dot{a}^4\ddot{a} \\  \, & + 6\alpha a^2 \dot{a}^3 \dddot{a} + a^2 \dot{a}^2 \left[ 5\left(1 - 2\alpha + \alpha \ln R\right)\ddot{a}^2 + \alpha a \ddddot{a} \right]   \\ \, & + a^3 \left[ 2\left(1 + \alpha \ln R\right)\ddot{a}^3 - \alpha a \dddot{a}^2 + \alpha a \ddot{a} \ddddot{a} \right] \Big] \, .
 				\end{aligned}
 			\end{matrix}
 	\end{equation}
-	where 
-	\begin{equation}
-		Q=\dot a^2+a\ddot a,\qquad L=\ln\left(\frac{6Q}{a^2}\right) \, .
-	\end{equation}
+
 	Rewritten as a function of the Hubble parameter,
 	\begin{equation}
 		\begin{matrix}
-				L^{00} = -3H^2 + \alpha\left[\frac{\dot H + H^2}{2\Xi} - \frac{1}{2}\ln(6\Xi) + \frac{HB}{2\Xi^2}\right] \, , \\ \, \\
-			L^{11} = \frac{1}{a^2}\Big\{3H^2 + 2\dot H + \alpha\Big[\tfrac12\ln(6\Xi) - \frac{\dot H + 3H^2}{6\Xi} - \frac{\dddot H + 4H\ddot H + 4\dot H^2}{6\Xi^2} + \frac{B^2}{3\Xi^3} - \frac{HB}{3\Xi^2}\Big]\Big\} \, ,
-		\end{matrix}
+				\begin{aligned}
+					L^{00}  = -\frac{1}{2H^2 + \dot{H}} & \Big[ 3 \big[ \left(1 - 2c + c \ln R\right) H^4  + \left(1 + c \ln R\right) H^2 (\dot{H} + H^2) \\  \, & - c (\dot{H} + H^2)^2 + c H (\ddot{H} + 3H\dot{H} + H^3) \big] \Big] \, ,
+			 \,  \\ \, \\
+		 	L^{11} = \frac{1}{a^2 (2H^2 + \dot{H})^2} \Big[ &\left(1 - 4\alpha + \alpha \ln R\right) H^6 \\ &+ \left(4 - 5\alpha + 4\alpha \ln R\right) H^4 (\dot{H} + H^2) \\ &+ 6\alpha H^3 (\ddot{H} + 3H\dot{H} + H^3) \\ &+ H^2 \left( 5\left(1 - 2\alpha + \alpha \ln R\right)(\dot{H} + H^2)^2 + \alpha (\dddot{H} + 4H\ddot{H} + 6H^2\dot{H} + 3\dot{H}^2 + H^4) \right) \\ &+ 2 \Big( 2\left(1 + \alpha \ln R\right)(\dot{H} + H^2)^3 - \alpha (\ddot{H} + 3H\dot{H} + H^3)^2 \\ \, &+ \alpha (\dot{H} + H^2)(\dddot{H} + 4H\ddot{H} + 6H^2\dot{H} + 3\dot{H}^2 + H^4) \Big) \Big] \, . \end{aligned}
+		\end{matrix} 
 	\end{equation}
-	where,
+	\section{The Hu–Sawicki $f(R)$ model}
+	The Hu-Sawicki model is defined as,
 	\begin{equation}
-		B = \ddot H + 4H\dot H \qquad\text{and} \qquad\Xi = \dot H + 2H^2 \, .
+		f(R)=R-2y(R,b)\Lambda = R-2\left( 1 - \frac{1}{1+\left( \frac{R}{\Lambda b} \right) ^p } \right)\Lambda \, , \quad p=1 \, .
+		\end{equation}
+	The form is chosen so that it behaves like a cosmological constant at high curvature while recovering standard GR at low curvature, which keeps the model viable across both early and late cosmic epochs.
+	
+	After variation, the tensor components are written as
+	\begin{equation}
+		\begin{aligned}
+			E^{ab}=\frac{1}{2 (b\Lambda + R)^4} \Big[
+			&-2 g^{ac} \Big( g^{bd} R_{cd} (b\Lambda + R)^2 \left( b^2\Lambda^2 - 2b\Lambda(\Lambda - R) + R^2 \right) - b^2\Lambda^2 \left( (b\Lambda + R) \nabla^b \nabla_c R - 3 (\nabla^b R)(\nabla_c R) \right) \Big) \\
+			&+ 2 b^2\Lambda^2 \Big( g^{bc} \left( (b\Lambda + R) \nabla^a \nabla_c R - 3 (\nabla^a R)(\nabla_c R) \right) \\
+			&\phantom{+ 2 b^2\Lambda^2 \Big( } + g^{ae} g^{bd} (b\Lambda + R) \nabla_e \nabla_d R + g^{ad} g^{be} \left( -6 (\nabla_d R)(\nabla_e R) + (b\Lambda + R) \nabla_e \nabla_d R \right) \Big) \\
+			&+ g^{ab} \Big( -4 b^2\Lambda^2 g^{cd} \left( -3 (\nabla_c R)(\nabla_d R) + (b\Lambda + R) \nabla_d \nabla_c R \right) \\
+			&\phantom{+ g^{ab} \Big( } + 12 b^2\Lambda^2 (\nabla^e R)(\nabla_e R) + (b\Lambda + R) \left( R ((b - 2)\Lambda + R)(b\Lambda + R)^2 - 4 b^2\Lambda^2 \Box R \right) \Big)
+			\Big] \, .
+		\end{aligned}
 	\end{equation}
+	Plugging in the FLRW metric, the LHS components are
+	\begin{equation}
+		\begin{aligned}
+			L^{00}=-\frac{3}{a^2 \left( b \Lambda a^2 + 6 \dot{a}^2 + 6 a \ddot{a} \right)^3} \Big[
+			&216 \dot{a}^8 + 648 a \dot{a}^6 \ddot{a} \\
+			&+ 6 \Lambda a^5 \ddot{a} \left( b(-2 + 3b) \Lambda \dot{a}^2 - 12 \ddot{a}^2 \right) \\
+			&+ 216 a^3 \dot{a}^2 \ddot{a} \left( (-1 + b) \Lambda \dot{a}^2 + \ddot{a}^2 \right) \\
+			&+ 18 \Lambda a^4 \dot{a}^2 \left( (-4 + b) b \Lambda \dot{a}^2 + 6(-2 + b) \ddot{a}^2 \right) \\
+			&+ 36 a^2 \left( (-2 + 3b) \Lambda \dot{a}^6 + 18 \dot{a}^4 \ddot{a}^2 \right) \\
+			&+ b \Lambda^2 a^6 \left( (-2 + b) b \Lambda \dot{a}^2 - 12 \ddot{a}^2 + 24 \dot{a} \dddot{a} \right)
+			\Big] \, ,
+		\end{aligned}
+	\end{equation}
+	\begin{equation}
+			\begin{aligned}
+				L^{11}=\frac{1}{a^4 \left( b \Lambda a^2 + 6 \dot{a}^2 + 6 a \ddot{a} \right)^4} \Big[
+				&1296 \dot{a}^{10} + 7776 a \dot{a}^8 \ddot{a} 
+				+ 432 a^2 \left( (-3 + 2b) \Lambda \dot{a}^8 + 42 \dot{a}^6 \ddot{a}^2 \right) \\
+				&+ 864 a^3 \left( (-6 + 5b) \Lambda \dot{a}^6 \ddot{a} + 24 \dot{a}^4 \ddot{a}^3 \right) 
+				+ 216 a^4 \left( (-9 + b) b \Lambda^2 \dot{a}^6 + 36 (-1 + b) \Lambda \dot{a}^4 \ddot{a}^2 + 54 \dot{a}^2 \ddot{a}^4 \right) \\
+				&+ 432 a^5 \left( b (-1 + 2b) \Lambda^2 \dot{a}^4 \ddot{a} + 2 (-6 + 7b) \Lambda \dot{a}^2 \ddot{a}^3 + 6 \ddot{a}^5 \right) \\
+				&+ 12 \Lambda a^6 \left( b^2 (-1 + 2b) \Lambda^2 \dot{a}^4 + 18 b (-13 + 5b) \Lambda \dot{a}^2 \ddot{a}^2 + 36 (-3 + 4b) \ddot{a}^4 + 168 b \Lambda \dot{a}^3 \dddot{a} \right) \\
+				&+ 2 b^2 \Lambda^3 a^9 \left( (-2 + b) b \Lambda \ddot{a} + 12 \ddddot{a} \right) \\
+				&+ 72 b \Lambda^2 a^7 \left( 6 (-1 + b) \ddot{a}^3 - 8 \dot{a} \ddot{a} \dddot{a} + \dot{a}^2 \left( (-4 + b) b \Lambda \ddot{a} + 2 \ddddot{a} \right) \right) \\
+				&+ b \Lambda^2 a^8 \left( (-2 + b) b^2 \Lambda^2 \dot{a}^2 + 48 b \Lambda \dot{a} \dddot{a} + 12 \left( b (-5 + 4b) \Lambda \ddot{a}^2 - 36 \dddot{a}^2 + 12 \ddot{a} \ddddot{a} \right) \right)
+				\Big] \, .
+			\end{aligned}
+	\end{equation}
+	Finally, we rewrite them using the definition of the Hubble parameter,
+	\begin{equation}
+		\begin{aligned}
+			L^{00}=-\frac{3}{ \left( b \Lambda + 12 H^2 + 6 \dot{H} \right)^3} \Big[
+			&216 H^8 + 648 H^6 (\dot{H} + H^2) \\
+			&+ 6 \Lambda (\dot{H} + H^2) \left( b(-2 + 3b) \Lambda H^2 - 12 (\dot{H} + H^2)^2 \right) \\
+			&+ 216 H^2 (\dot{H} + H^2) \left( (-1 + b) \Lambda H^2 + (\dot{H} + H^2)^2 \right) \\
+			&+ 18 \Lambda H^2 \left( (-4 + b) b \Lambda H^2 + 6(-2 + b) (\dot{H} + H^2)^2 \right) \\
+			&+ 36 \left( (-2 + 3b) \Lambda H^6 + 18 H^4 (\dot{H} + H^2)^2 \right) \\
+			&+ b \Lambda^2 \left( (-2 + b) b \Lambda H^2 - 12 (\dot{H} + H^2)^2 + 24 H (\ddot{H} + 3H\dot{H} + H^3) \right)
+			\Big] \, ,
+		\end{aligned}
+	\end{equation}
+	\begin{equation}
+		\begin{aligned}
+			L^{11}=\frac{1}{\left( b \Lambda + 12 H^2 + 6 \dot{H} \right)^4} \Big[
+			&1296 H^{10} + 7776 H^8 (\dot{H} + H^2) \\
+			&+ 432 \left( (-3 + 2b) \Lambda H^8 + 42 H^6 (\dot{H} + H^2)^2 \right) \\
+			&+ 864 \left( (-6 + 5b) \Lambda H^6 (\dot{H} + H^2) + 24 H^4 (\dot{H} + H^2)^3 \right) \\
+			&+ 216 \Big( (-9 + b) b \Lambda^2 H^6 + 36 (-1 + b) \Lambda H^4 (\dot{H} + H^2)^2 \\
+			&\phantom{+ 216 \Big( } + 54 H^2 (\dot{H} + H^2)^4 \Big) \\
+			&+ 432 \Big( b (-1 + 2b) \Lambda^2 H^4 (\dot{H} + H^2) + 2 (-6 + 7b) \Lambda H^2 (\dot{H} + H^2)^3 \\
+			&\phantom{+ 432 \Big( } + 6 (\dot{H} + H^2)^5 \Big) \\
+			&+ 12 \Lambda \Big( b^2 (-1 + 2b) \Lambda^2 H^4 + 18 b (-13 + 5b) \Lambda H^2 (\dot{H} + H^2)^2 \\
+			&\phantom{+ 12 \Lambda \Big( } + 36 (-3 + 4b) (\dot{H} + H^2)^4 + 168 b \Lambda H^3 (\ddot{H} + 3H\dot{H} + H^3) \Big) \\
+			&+ 2 b^2 \Lambda^3 a^3 \Big( (-2 + b) b \Lambda (\dot{H} + H^2) \\
+			&\phantom{+ 2 b^2 \Lambda^3 a^3 \Big( } + 12 (\ddddot{H} + 4H\ddot{H} + 6H^2\dot{H} + 3\dot{H}^2 + H^4) \Big) \\
+			&+ 72 b \Lambda^2 a \Big( 6 (-1 + b) (\dot{H} + H^2)^3 - 8 H (\dot{H} + H^2) (\ddot{H} + 3H\dot{H} + H^3) \\
+			&\phantom{+ 72 b \Lambda^2 a \Big( } + H^2 \left( (-4 + b) b \Lambda (\dot{H} + H^2) + 2 (\ddddot{H} + 4H\ddot{H} + 6H^2\dot{H} + 3\dot{H}^2 + H^4) \right) \Big) \\
+			&+ b \Lambda^2 a^2 \Big( (-2 + b) b^2 \Lambda^2 H^2 + 48 b \Lambda H (\ddot{H} + 3H\dot{H} + H^3) \\
+			&\phantom{+ b \Lambda^2 a^2 \Big( } + 12 \Big( b (-5 + 4b) \Lambda (\dot{H} + H^2)^2 - 36 (\ddot{H} + 3H\dot{H} + H^3)^2 \\
+			&\phantom{+ b \Lambda^2 a^2 \Big( + 12 \Big( } + 12 (\dot{H} + H^2) (\ddddot{H} + 4H\ddot{H} + 6H^2\dot{H} + 3\dot{H}^2 + H^4) \Big) \Big)
+			\Big] \, .
+		\end{aligned}
+	\end{equation}
+	
 	
 	\chapter{Data-Analysis Methods in Computational Physics - An Introduction to the Monte Carlo Method}
 	\section{The Core of MC Methods}
